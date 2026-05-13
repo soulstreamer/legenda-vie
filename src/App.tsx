@@ -19,6 +19,7 @@ import PoliticaCookies from './pages/legal/PoliticaCookies';
 import Anpc from './pages/legal/Anpc';
 import SolutionareaLitigiilor from './pages/legal/SolutionareaLitigiilor';
 import IntroScreen from './components/IntroScreen';
+import FloatingContactButton from './components/FloatingContactButton';
 
 function HomePage() {
   const lenisRef = useRef<Lenis | null>(null);
@@ -84,6 +85,7 @@ export default function App() {
       {!introDone && <IntroScreen onFinish={handleIntroFinish} />}
       <div style={{ opacity: introDone ? 1 : 0, transition: 'opacity 0.6s ease' }}>
         <CustomCursor />
+        <FloatingContactButton />
         <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/store" element={<Store />} />
