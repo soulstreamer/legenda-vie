@@ -87,7 +87,7 @@ export default function Hero({ onNavigate: _onNavigate }: HeroProps) {
         }}
       />
 
-      <div className="flex-1 flex items-center">
+      <div className="flex-1 flex flex-col items-center justify-center">
       <div className="relative z-10 max-w-[1400px] mx-auto w-full px-6 lg:px-10 pt-24 pb-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[70vh]">
           <div ref={textRef} className="flex flex-col gap-6 relative z-10 lg:z-auto">
@@ -195,11 +195,6 @@ export default function Hero({ onNavigate: _onNavigate }: HeroProps) {
               </div>
             </div>
 
-            {/* Scroll indicator inside text column */}
-            <div className="animate-item flex items-center gap-2 mt-6 lg:mt-8">
-              <span className="font-mono-label text-silver">Derulează</span>
-              <ChevronDown size={16} className="text-plum animate-bounce" />
-            </div>
           </div>
 
           <div
@@ -241,6 +236,10 @@ export default function Hero({ onNavigate: _onNavigate }: HeroProps) {
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex flex-col items-center gap-2 pb-6 lg:pb-8">
+        <span className="font-mono-label text-silver">Derulează</span>
+        <ChevronDown size={16} className="text-plum animate-bounce" />
       </div>
       </div>
     </section>
