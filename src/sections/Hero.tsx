@@ -194,6 +194,12 @@ export default function Hero({ onNavigate: _onNavigate }: HeroProps) {
                 <span className="font-mono-label text-silver mt-0.5 md:mt-1 text-[9px] sm:text-[10px] md:text-xs">Materiale</span>
               </div>
             </div>
+
+            {/* Scroll indicator inside text column */}
+            <div className="animate-item flex items-center gap-2 mt-6 lg:mt-8">
+              <span className="font-mono-label text-silver">Derulează</span>
+              <ChevronDown size={16} className="text-plum animate-bounce" />
+            </div>
           </div>
 
           <div
@@ -236,13 +242,6 @@ export default function Hero({ onNavigate: _onNavigate }: HeroProps) {
           </div>
         </div>
       </div>
-      </div>
-
-      <div className="flex items-center justify-center pb-6 lg:pb-8">
-        <div className="flex flex-col items-center gap-2 animate-bounce">
-          <span className="font-mono-label text-silver">Derulează</span>
-          <ChevronDown size={20} className="text-plum" />
-        </div>
       </div>
     </section>
   );
