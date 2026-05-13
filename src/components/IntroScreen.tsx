@@ -25,7 +25,7 @@ export default function IntroScreen({ onFinish }: IntroScreenProps) {
       style={{ opacity: phase === 'enter' ? 0 : phase === 'exit' ? 0 : 1 }}
     >
       <img
-        src="/assets/samurailogo.png"
+        src="/assets/samurailogo.webp"
         alt="Samurai"
         className="w-[200px] sm:w-[280px] lg:w-[400px] h-auto object-contain"
         style={{

@@ -79,8 +79,9 @@ export default function Navbar({ onNavigate }: NavbarProps) {
               className="block transition-all duration-300 hover:[filter:drop-shadow(0_0_24px_rgba(155,89,182,0.6))_drop-shadow(0_0_48px_rgba(75,0,130,0.5))]"
             >
               <img
-                src="/assets/samurailogo.png"
+                src="/assets/samurailogo.webp"
                 alt="Samurai Clothing Logo"
+                fetchpriority="high"
                 style={{
                   height: '160px',
                   width: 'auto',
@@ -99,8 +100,9 @@ export default function Navbar({ onNavigate }: NavbarProps) {
               className="block transition-all duration-300 hover:[filter:drop-shadow(0_0_24px_rgba(155,89,182,0.6))_drop-shadow(0_0_48px_rgba(75,0,130,0.5))]"
             >
               <img
-                src="/assets/samurailogo.png"
+                src="/assets/samurailogo.webp"
                 alt="Samurai Clothing Logo"
+                fetchpriority="high"
                 style={{
                   height: '160px',
                   width: 'auto',
@@ -156,7 +158,7 @@ export default function Navbar({ onNavigate }: NavbarProps) {
               className="transition-all duration-300 hover:[filter:drop-shadow(0_0_24px_rgba(155,89,182,0.6))_drop-shadow(0_0_48px_rgba(75,0,130,0.5))]"
             >
               <img
-                src="/assets/samurailogo.png"
+                src="/assets/samurailogo.webp"
                 alt="Samurai Clothing Logo"
                 style={{
                   height: '96px',
@@ -172,7 +174,7 @@ export default function Navbar({ onNavigate }: NavbarProps) {
               className="block transition-all duration-300 hover:[filter:drop-shadow(0_0_24px_rgba(155,89,182,0.6))_drop-shadow(0_0_48px_rgba(75,0,130,0.5))]"
             >
               <img
-                src="/assets/samurailogo.png"
+                src="/assets/samurailogo.webp"
                 alt="Samurai Clothing Logo"
                 style={{
                   height: '96px',

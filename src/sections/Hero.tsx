@@ -58,9 +58,10 @@ export default function Hero({ onNavigate: _onNavigate }: HeroProps) {
     >
       <div className="absolute inset-0 z-0">
         <img
-          src="/assets/hero-bg.jpg"
+          src="/assets/hero-bg.webp"
           alt=""
           className="w-full h-full object-cover opacity-60"
+          fetchpriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/70 via-[#050505]/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/40 via-transparent to-[#050505]/20" />
@@ -217,8 +218,9 @@ export default function Hero({ onNavigate: _onNavigate }: HeroProps) {
                 }}
               >
                 <img
-                  src="/assets/book-isolated.png"
+                  src="/assets/book-isolated.webp"
                   alt="Manuscris Book"
+                  fetchpriority="high"
                   className="w-[200px] sm:w-[280px] lg:w-[400px] h-auto object-contain"
                   style={{
                     filter: 'drop-shadow(0 0 30px rgba(75,0,130,0.4)) drop-shadow(0 20px 40px rgba(0,0,0,0.8))',

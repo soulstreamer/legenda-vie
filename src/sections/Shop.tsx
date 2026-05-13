@@ -85,7 +85,7 @@ export default function Shop() {
             style={{ background: 'linear-gradient(135deg, rgba(75,0,130,0.2) 0%, rgba(10,10,10,0.8) 50%, rgba(75,0,130,0.15) 100%)' }}
           >
             <img
-              src="/assets/samuraioferta.png"
+              src="/assets/samuraioferta.webp"
               alt="Ofertă Specială" loading="lazy"
               className="flex-shrink-0 w-40 sm:w-48 lg:w-64 h-auto object-contain animate-pulse-glow"
               style={{ filter: 'drop-shadow(0 0 12px rgba(155,89,182,0.4))' }}

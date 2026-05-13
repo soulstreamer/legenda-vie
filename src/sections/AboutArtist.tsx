@@ -68,7 +68,7 @@ export default function AboutArtist() {
                 }}
               >
                 <img
-                  src="/assets/samuraiclub.jpg"
+                  src="/assets/samuraiclub.webp"
                   alt="Samurai — Legendă Vie"
                   className="w-[320px] sm:w-[400px] h-auto object-contain"
                   style={{
