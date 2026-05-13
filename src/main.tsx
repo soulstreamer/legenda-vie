@@ -4,13 +4,14 @@ import { BrowserRouter } from 'react-router'
 import './index.css'
 import App from './App.tsx'
 
-// Particle field setup - runs before React
+// Particle field setup - runs before React (optimized for mobile)
 (function(){
   var canvas = document.getElementById('pc');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
   if (!ctx) return;
 
+  var isMobile = window.innerWidth < 768;
   var RAIN_COLORS = [
     'rgba(0, 210, 220,', 'rgba(0, 180, 210,', 'rgba(30, 150, 230,',
     'rgba(0, 230, 200,', 'rgba(80, 190, 240,',
@@ -31,7 +32,11 @@ import App from './App.tsx'
   resize();
   window.addEventListener('resize', resize);
 
-  for (var i = 0; i < 60; i++) {
+  // Detect resize for mobile toggle
+  window.addEventListener('resize', function(){isMobile = window.innerWidth < 768;});
+
+  var pc = isMobile ? 20 : 60;
+  for (var i = 0; i < pc; i++) {
     particles.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -42,7 +47,8 @@ import App from './App.tsx'
     });
   }
 
-  for (var i = 0; i < 90; i++) {
+  var rc = isMobile ? 30 : 90;
+  for (var i = 0; i < rc; i++) {
     rainDrops.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -58,6 +64,9 @@ import App from './App.tsx'
     });
   }
 
+  var lightningMax = isMobile ? 1 : 3;
+  var shadowQuality = isMobile ? 0 : 1;
+
   function genPts(sx, sy, ex, ey, r, d) {
     if (d === 0) return [{x:sx,y:sy},{x:ex,y:ey}];
     var mx = (sx+ex)/2 + (Math.random()-0.5)*r;
@@ -69,25 +78,27 @@ import App from './App.tsx'
     var sx = Math.random() * canvas.width;
     var ex = sx + (Math.random()-0.5)*300;
     var ey = canvas.height*(0.3+Math.random()*0.5);
-    var pts = genPts(sx,-20,ex,ey,180,6);
+    var depth = isMobile ? 4 : 6;
+    var pts = genPts(sx,-20,ex,ey,180,depth);
     var branches = [];
-    for (var b=0;b<Math.floor(Math.random()*3)+1;b++) {
+    var bc = isMobile ? 0 : Math.floor(Math.random()*2)+1;
+    for (var b=0;b<bc;b++) {
       var bi = Math.floor(pts.length*(0.2+Math.random()*0.5));
       if (bi>=pts.length) continue;
       var bp=pts[bi];
-      branches.push({points:genPts(bp.x,bp.y,bp.x+(Math.random()-0.5)*200,bp.y+Math.random()*200,80,4),opacity:0.4+Math.random()*0.3});
+      branches.push({points:genPts(bp.x,bp.y,bp.x+(Math.random()-0.5)*200,bp.y+Math.random()*200,80,3),opacity:0.4+Math.random()*0.3});
     }
-    lightningBolts.push({active:true,points:pts,opacity:0.9+Math.random()*0.1,life:8+Math.floor(Math.random()*10),maxLife:8+Math.floor(Math.random()*10),branches:branches,flashIntensity:0.12+Math.random()*0.1});
+    lightningBolts.push({active:true,points:pts,opacity:0.9+Math.random()*0.1,life:5+Math.floor(Math.random()*6),maxLife:5+Math.floor(Math.random()*6),branches:branches,flashIntensity:0.1+Math.random()*0.08});
   }
 
   function drawBolt(pts,a,w) {
     if (pts.length<2) return;
     ctx.save();
-    ctx.strokeStyle='rgba(180,220,255,'+(a*0.2)+')';ctx.lineWidth=w*5;ctx.shadowBlur=24;ctx.shadowColor='rgba(150,200,255,0.6)';ctx.lineCap='round';
+    ctx.strokeStyle='rgba(180,220,255,'+(a*0.2)+')';ctx.lineWidth=w*5*(shadowQuality||1);if(shadowQuality){ctx.shadowBlur=24;ctx.shadowColor='rgba(150,200,255,0.6)';}ctx.lineCap='round';
     ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);for(var i=1;i<pts.length;i++)ctx.lineTo(pts[i].x,pts[i].y);ctx.stroke();
-    ctx.strokeStyle='rgba(160,200,255,'+(a*0.6)+')';ctx.lineWidth=w*2.5;ctx.shadowBlur=14;
+    ctx.strokeStyle='rgba(160,200,255,'+(a*0.6)+')';ctx.lineWidth=w*2.5*(shadowQuality||1);if(shadowQuality){ctx.shadowBlur=14;}
     ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);for(var i=1;i<pts.length;i++)ctx.lineTo(pts[i].x,pts[i].y);ctx.stroke();
-    ctx.strokeStyle='rgba(255,255,255,'+a+')';ctx.lineWidth=w;ctx.shadowBlur=6;ctx.shadowColor='rgba(200,230,255,1)';
+    ctx.strokeStyle='rgba(255,255,255,'+a+')';ctx.lineWidth=w;if(shadowQuality){ctx.shadowBlur=6;ctx.shadowColor='rgba(200,230,255,1)';}
     ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);for(var i=1;i<pts.length;i++)ctx.lineTo(pts[i].x,pts[i].y);ctx.stroke();
     ctx.restore();
   }
@@ -117,14 +128,16 @@ import App from './App.tsx'
       var g=ctx.createLinearGradient(d.x,d.y-d.length,d.x+d.length*0.07,d.y);
       g.addColorStop(0,d.color+'0)');g.addColorStop(d.trail,d.color+(d.opacity*0.4)+')');g.addColorStop(1,d.color+d.opacity+')');
       ctx.save();ctx.strokeStyle=g;ctx.lineWidth=d.width;ctx.lineCap='round';
-      if(d.opacity>0.1){ctx.shadowBlur=5;ctx.shadowColor=d.color+'0.5)';}
+      if(shadowQuality && d.opacity>0.1){ctx.shadowBlur=5;ctx.shadowColor=d.color+'0.5)';}
       ctx.beginPath();ctx.moveTo(d.x,d.y-d.length);ctx.lineTo(d.x+d.length*0.07,d.y);ctx.stroke();ctx.restore();
     }
 
     var now=Date.now();
-    if(now-lastLightning>nextInterval&&lightningBolts.length<3){
-      lastLightning=now;nextInterval=2500+Math.random()*4000;spawnBolt();
-      if(Math.random()<0.35)setTimeout(spawnBolt,80+Math.random()*150);
+    var nxtMin = isMobile ? 6000 : 2500;
+    var nxtMax = isMobile ? 8000 : 4000;
+    if(now-lastLightning>nextInterval&&lightningBolts.length<lightningMax){
+      lastLightning=now;nextInterval=nxtMin+Math.random()*nxtMax;spawnBolt();
+      if(!isMobile && Math.random()<0.35)setTimeout(spawnBolt,80+Math.random()*150);
     }
 
     for(var i=lightningBolts.length-1;i>=0;i--){
