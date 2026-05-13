@@ -52,10 +52,10 @@ export default function AboutArtist() {
             >
               {/* Pulsing white light glow */}
               <div
-                className="absolute -inset-4 rounded-lg opacity-60 animate-pulse-glow-white"
+                className="absolute -inset-6 rounded-lg animate-pulse-glow-white"
                 style={{
-                  background: 'radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 40%, transparent 70%)',
-                  filter: 'blur(20px)',
+                  background: 'radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 35%, transparent 65%)',
+                  filter: 'blur(30px)',
                 }}
               />
               {/* Image card */}
@@ -64,7 +64,7 @@ export default function AboutArtist() {
                 style={{
                   border: '1px solid rgba(255,255,255,0.15)',
                   borderRadius: '4px',
-                  boxShadow: '0 0 40px rgba(255,255,255,0.08)',
+                  boxShadow: '0 0 60px rgba(255,255,255,0.15), 0 0 120px rgba(255,255,255,0.05)',
                 }}
               >
                 <img
@@ -73,7 +73,7 @@ export default function AboutArtist() {
                   className="w-[320px] sm:w-[400px] h-auto object-contain"
                   style={{
                     background: '#0A0A0A',
-                    filter: 'drop-shadow(0 0 20px rgba(255,255,255,0.1))',
+                    filter: 'drop-shadow(0 0 30px rgba(255,255,255,0.2)) drop-shadow(0 0 60px rgba(255,255,255,0.1))',
                   }}
                 />
                 {/* Overlay shimmer */}
