@@ -10,8 +10,8 @@ export default function IntroScreen({ onFinish }: IntroScreenProps) {
   useEffect(() => {
     requestAnimationFrame(() => setPhase('visible'));
 
-    const exitTimer = setTimeout(() => setPhase('exit'), 4000);
-    const removeTimer = setTimeout(() => onFinish(), 4800);
+    const exitTimer = setTimeout(() => setPhase('exit'), 1500);
+    const removeTimer = setTimeout(() => onFinish(), 2300);
 
     return () => {
       clearTimeout(exitTimer);
