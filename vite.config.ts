@@ -8,7 +8,12 @@ export default defineConfig({
   base: './',
   plugins: [inspectAttr(), react()],
   server: {
-    port: 3000,
+    host: '0.0.0.0',
+    port: parseInt(process.env.PORT || '3000'),
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: parseInt(process.env.PORT || '4173'),
   },
   resolve: {
     alias: {
