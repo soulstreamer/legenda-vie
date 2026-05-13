@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 30 20% 94%;
+    --card: 0 0% 4%;
+    --card-foreground: 30 20% 94%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 30 20% 94%;
+    --primary: 270 100% 25%;
+    --primary-foreground: 30 20% 94%;
+    --secondary: 0 0% 7%;
+    --secondary-foreground: 30 20% 94%;
+    --muted: 0 0% 7%;
+    --muted-foreground: 210 10% 60%;
+    --accent: 285 50% 46%;
+    --accent-foreground: 30 20% 94%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 30 20% 94%;
+    --border: 0 0% 27%;
+    --input: 0 0% 7%;
+    --ring: 270 100% 25%;
+    --radius: 0.25rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-void text-white antialiased;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  @media (pointer: coarse) {
+    body {
+      cursor: auto;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    word-break: keep-all;
+  }
+
+  ::selection {
+    background: rgba(75, 0, 130, 0.4);
+    color: #F5F0EB;
+  }
+}
+
+@layer components {
+  .font-mono-label {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(10px, 1vw, 12px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .font-mono-accent {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(12px, 1.2vw, 16px);
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+  }
+
+  .font-script {
+    font-family: 'WindSong', cursive;
+    font-size: clamp(24px, 3vw, 48px);
+    line-height: 1.0;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #4B0082, #7B2D8E);
+    color: #F5F0EB;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 16px 40px;
+    border-radius: 0;
+    border: 1px solid rgba(155, 89, 182, 0.3);
+    transition: all 0.4s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #7B2D8E, #9B59B6);
+    box-shadow: 0 0 24px rgba(75, 0, 130, 0.4);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: #F5F0EB;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 16px 40px;
+    border-radius: 0;
+    border: 1px solid rgba(245, 240, 235, 0.3);
+    transition: all 0.4s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .btn-ghost:hover {
+    border-color: rgba(155, 89, 182, 0.6);
+    color: #9B59B6;
+    box-shadow: 0 0 16px rgba(75, 0, 130, 0.2);
+  }
+
+  .text-gradient-purple {
+    background: linear-gradient(135deg, #9B59B6, #7B2D8E, #4B0082);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 30px rgba(75, 0, 130, 0.3), 0 0 60px rgba(75, 0, 130, 0.15);
+  }
+
+  .border-glow {
+    border: 1px solid rgba(75, 0, 130, 0.3);
+    box-shadow: 0 0 15px rgba(75, 0, 130, 0.1);
+  }
+}
+
+@layer utilities {
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+/* Book animations */
+@keyframes bookRotate {
+  0% { transform: rotateY(-8deg); }
+  50% { transform: rotateY(8deg); }
+  100% { transform: rotateY(-8deg); }
+}
+
+@keyframes bookFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-book-rotate {
+  animation: bookRotate 8s ease-in-out infinite;
+}
+
+.animate-book-float {
+  animation: bookFloat 6s ease-in-out infinite;
+}
+
+/* Neon line animation */
+@keyframes neonPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4B0082;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7B2D8E;
+}
