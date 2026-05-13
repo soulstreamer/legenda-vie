@@ -237,9 +237,11 @@ export default function Hero({ onNavigate: _onNavigate }: HeroProps) {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center gap-2 pb-6 lg:pb-8">
-        <span className="font-mono-label text-silver">Derulează</span>
-        <ChevronDown size={16} className="text-plum animate-bounce" />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+        <div className="flex flex-col items-center gap-2 animate-bounce">
+          <span className="font-mono-label text-silver">Derulează</span>
+          <ChevronDown size={16} className="text-plum" />
+        </div>
       </div>
       </div>
     </section>
