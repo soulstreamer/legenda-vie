@@ -81,7 +81,7 @@ export default function Navbar({ onNavigate }: NavbarProps) {
               <img
                 src="/assets/samurailogo.webp"
                 alt="Samurai Clothing Logo"
-                fetchpriority="high"
+                fetchPriority="high"
                 style={{
                   height: '160px',
                   width: 'auto',
@@ -102,7 +102,7 @@ export default function Navbar({ onNavigate }: NavbarProps) {
               <img
                 src="/assets/samurailogo.webp"
                 alt="Samurai Clothing Logo"
-                fetchpriority="high"
+                fetchPriority="high"
                 style={{
                   height: '160px',
                   width: 'auto',
