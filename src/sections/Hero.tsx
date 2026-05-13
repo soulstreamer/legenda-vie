@@ -53,7 +53,7 @@ export default function Hero({ onNavigate: _onNavigate }: HeroProps) {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative min-h-screen w-full flex items-center overflow-hidden"
+      className="relative min-h-screen w-full flex flex-col overflow-hidden"
       style={{ background: '#050505' }}
     >
       <div className="absolute inset-0 z-0">
@@ -87,7 +87,8 @@ export default function Hero({ onNavigate: _onNavigate }: HeroProps) {
         }}
       />
 
-      <div className="relative z-10 max-w-[1400px] mx-auto w-full px-6 lg:px-10 pt-24 pb-20">
+      <div className="flex-1 flex items-center">
+      <div className="relative z-10 max-w-[1400px] mx-auto w-full px-6 lg:px-10 pt-24 pb-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[70vh]">
           <div ref={textRef} className="flex flex-col gap-6 relative z-10 lg:z-auto">
             <div className="animate-item mt-8 lg:mt-12">
@@ -235,10 +236,13 @@ export default function Hero({ onNavigate: _onNavigate }: HeroProps) {
           </div>
         </div>
       </div>
+      </div>
 
-      <div className="absolute bottom-20 lg:bottom-8 left-0 right-0 z-10 flex flex-col items-center gap-2 animate-bounce mx-auto w-fit">
-        <span className="font-mono-label text-silver">Derulează</span>
-        <ChevronDown size={20} className="text-plum" />
+      <div className="flex items-center justify-center pb-6 lg:pb-8">
+        <div className="flex flex-col items-center gap-2 animate-bounce">
+          <span className="font-mono-label text-silver">Derulează</span>
+          <ChevronDown size={20} className="text-plum" />
+        </div>
       </div>
     </section>
   );
