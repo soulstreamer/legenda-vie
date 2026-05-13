@@ -153,6 +153,12 @@ import App from './App.tsx'
   }
 
   rafId=requestAnimationFrame(animate);
+
+  // Pause when tab is hidden (save battery)
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden && rafId){cancelAnimationFrame(rafId);rafId=0;}
+    else if(!document.hidden && !rafId){rafId=requestAnimationFrame(animate);}
+  });
 })();
 
 createRoot(document.getElementById('root')!).render(

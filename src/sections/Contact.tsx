@@ -49,7 +49,7 @@ export default function Contact() {
       id="contact"
       ref={sectionRef}
       className="relative w-full py-24 lg:py-32"
-      style={{ background: '#050505' }}
+      style={{ background: '#050505', contentVisibility: 'auto' }}
     >
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-deep-purple to-transparent opacity-60" />
 

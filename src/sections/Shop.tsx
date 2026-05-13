@@ -57,7 +57,7 @@ export default function Shop() {
       id="shop"
       ref={sectionRef}
       className="relative w-full py-24 lg:py-32"
-      style={{ background: '#0A0A0A' }}
+      style={{ background: '#0A0A0A', contentVisibility: 'auto' }}
     >
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-deep-purple to-transparent opacity-60" />
 
@@ -86,7 +86,7 @@ export default function Shop() {
           >
             <img
               src="/assets/samuraioferta.png"
-              alt="Ofertă Specială"
+              alt="Ofertă Specială" loading="lazy"
               className="flex-shrink-0 w-40 sm:w-48 lg:w-64 h-auto object-contain animate-pulse-glow"
               style={{ filter: 'drop-shadow(0 0 12px rgba(155,89,182,0.4))' }}
             />
@@ -160,7 +160,7 @@ export default function Shop() {
                 <div className="aspect-[4/5] overflow-hidden relative">
                   <img
                     src={product.images[0]}
-                    alt={product.name}
+                    alt={product.name} loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-plum/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
